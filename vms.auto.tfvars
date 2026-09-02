@@ -1,11 +1,11 @@
 vms = {
-  "platipus-cicd" = {
-    machine_type             = "e2-custom-4-8192"
+  "platipus-atlantis" = {
+    machine_type             = "e2-medium"
     image                    = "debian-cloud/debian-12"
     disk_size_gb             = 30
-    is_spot                  = true
+    is_spot                  = false
     add_public_ip            = true
-    max_run_duration_seconds = 18000 # 5 hours
+    max_run_duration_seconds = null
     subnet_name              = "subnet-01"
     startup_script_path      = "scripts/startup.sh"
   }
