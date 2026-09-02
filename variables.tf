@@ -22,6 +22,7 @@ variable "vms" {
     is_spot                  = bool
     add_public_ip            = bool
     use_static_ip            = optional(bool)
+    static_ip_address        = optional(string)
     network_tier             = optional(string)
     max_run_duration_seconds = optional(number)
     subnet_name              = string

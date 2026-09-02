@@ -21,6 +21,7 @@ module "compute_vms" {
   is_spot                  = each.value.is_spot
   add_public_ip            = each.value.add_public_ip
   use_static_ip            = try(each.value.use_static_ip, false)
+  static_ip_address        = try(each.value.static_ip_address, null)
   network_tier             = each.value.network_tier
   max_run_duration_seconds = each.value.max_run_duration_seconds
   metadata_startup_script  = each.value.startup_script_path != null ? file("${path.module}/${each.value.startup_script_path}") : null
