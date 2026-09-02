@@ -21,6 +21,7 @@ variable "vms" {
     disk_size_gb             = number
     is_spot                  = bool
     add_public_ip            = bool
+    use_static_ip            = optional(bool)
     network_tier             = optional(string)
     max_run_duration_seconds = optional(number)
     subnet_name              = string
