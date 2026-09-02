@@ -7,6 +7,7 @@ vms = {
     add_public_ip            = true
     max_run_duration_seconds = null
     subnet_name              = "subnet-01"
-    startup_script_path      = "scripts/startup.sh"
-  }          
+    startup_script_path      = null
+  }
 }
+
