@@ -21,7 +21,7 @@ variable "vms" {
     disk_size_gb             = number
     is_spot                  = bool
     add_public_ip            = bool
-    network_tier             = optional(string, "STANDARD")
+    network_tier             = optional(string)
     max_run_duration_seconds = optional(number)
     subnet_name              = string
     startup_script_path      = optional(string)
@@ -34,23 +34,23 @@ variable "gke_clusters" {
   type = map(object({
     location                     = optional(string)
     subnet_name                  = string
-    pod_secondary_range_name     = optional(string, "gke-pod-dev-1")
-    service_secondary_range_name = optional(string, "gke-svc-dev-1")
-    master_ipv4_cidr_block       = optional(string, "172.16.0.0/28")
-    enable_private_nodes         = optional(bool, true)
-    enable_private_endpoint      = optional(bool, false)
-    gateway_api_channel          = optional(string, "CHANNEL_STANDARD")
-    release_channel              = optional(string, "REGULAR")
-    deletion_protection          = optional(bool, false)
+    pod_secondary_range_name     = optional(string)
+    service_secondary_range_name = optional(string)
+    master_ipv4_cidr_block       = optional(string)
+    enable_private_nodes         = optional(bool)
+    enable_private_endpoint      = optional(bool)
+    gateway_api_channel          = optional(string)
+    release_channel              = optional(string)
+    deletion_protection          = optional(bool)
     master_authorized_networks_config = optional(list(object({
       cidr_block   = string
       display_name = string
-    })), [])
+    })))
     node_pools = optional(map(object({
-      machine_type = optional(string, "e2-medium")
-      disk_size_gb = optional(number, 50)
-      disk_type    = optional(string, "pd-standard")
-      is_spot      = optional(bool, true)
+      machine_type = optional(string)
+      disk_size_gb = optional(number)
+      disk_type    = optional(string)
+      is_spot      = optional(bool)
       node_count   = optional(number)
       autoscaling = optional(object({
         min_node_count = number
@@ -58,9 +58,9 @@ variable "gke_clusters" {
       }))
       max_pods_per_node = optional(number)
       service_account   = optional(string)
-      tags              = optional(list(string), [])
-      labels            = optional(map(string), {})
-    })), {})
+      tags              = optional(list(string))
+      labels            = optional(map(string))
+    })))
   }))
   default = {}
 }
