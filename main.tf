@@ -42,6 +42,7 @@ module "gke_clusters" {
   enable_private_endpoint           = each.value.enable_private_endpoint
   gateway_api_channel               = each.value.gateway_api_channel
   release_channel                   = each.value.release_channel
+  datapath_provider                 = try(each.value.datapath_provider, "ADVANCED_DATAPATH")
   deletion_protection               = each.value.deletion_protection
   master_authorized_networks_config = each.value.master_authorized_networks_config
   node_pools                        = each.value.node_pools
