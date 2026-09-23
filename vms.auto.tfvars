@@ -17,7 +17,6 @@ vms = {
     disk_size_gb             = 10
     is_spot                  = true
     add_public_ip            = false
-    network_tier             = "STANDARD"
     max_run_duration_seconds = 7200 # 2 hours
     subnet_name              = "subnet-02"
     startup_script_path      = null
