@@ -48,7 +48,7 @@ variable "gke_clusters" {
     master_authorized_networks_config = optional(list(object({
       cidr_block   = string
       display_name = string
-    })))
+    })), [])
     node_pools = optional(map(object({
       machine_type = optional(string)
       disk_size_gb = optional(number)

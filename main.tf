@@ -44,6 +44,6 @@ module "gke_clusters" {
   release_channel                   = each.value.release_channel
   datapath_provider                 = try(each.value.datapath_provider, "ADVANCED_DATAPATH")
   deletion_protection               = each.value.deletion_protection
-  master_authorized_networks_config = each.value.master_authorized_networks_config
+  master_authorized_networks_config = try(each.value.master_authorized_networks_config, [])
   node_pools                        = each.value.node_pools
 }
