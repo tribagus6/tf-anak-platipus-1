@@ -34,6 +34,7 @@ module "gke_clusters" {
   project_id                        = var.service_project_id
   cluster_name                      = each.key
   location                          = coalesce(each.value.location, var.region, var.zone)
+  network                           = "projects/bokap-platipus/global/networks/platipus-shared-vpc"
   subnetwork                        = data.terraform_remote_state.foundations.outputs.subnet_self_links[each.value.subnet_name]
   pod_secondary_range_name          = each.value.pod_secondary_range_name
   service_secondary_range_name      = each.value.service_secondary_range_name
