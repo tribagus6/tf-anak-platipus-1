@@ -43,11 +43,12 @@ variable "gke_clusters" {
     enable_private_endpoint      = optional(bool)
     gateway_api_channel          = optional(string)
     release_channel              = optional(string)
+    datapath_provider            = optional(string)
     deletion_protection          = optional(bool)
     master_authorized_networks_config = optional(list(object({
       cidr_block   = string
       display_name = string
-    })))
+    })), [])
     node_pools = optional(map(object({
       machine_type = optional(string)
       disk_size_gb = optional(number)

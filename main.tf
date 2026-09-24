@@ -34,6 +34,7 @@ module "gke_clusters" {
   project_id                        = var.service_project_id
   cluster_name                      = each.key
   location                          = coalesce(each.value.location, var.region, var.zone)
+  network                           = "projects/bokap-platipus/global/networks/platipus-shared-vpc"
   subnetwork                        = data.terraform_remote_state.foundations.outputs.subnet_self_links[each.value.subnet_name]
   pod_secondary_range_name          = each.value.pod_secondary_range_name
   service_secondary_range_name      = each.value.service_secondary_range_name
@@ -42,7 +43,8 @@ module "gke_clusters" {
   enable_private_endpoint           = each.value.enable_private_endpoint
   gateway_api_channel               = each.value.gateway_api_channel
   release_channel                   = each.value.release_channel
+  datapath_provider                 = try(each.value.datapath_provider, "ADVANCED_DATAPATH")
   deletion_protection               = each.value.deletion_protection
-  master_authorized_networks_config = each.value.master_authorized_networks_config
+  master_authorized_networks_config = try(each.value.master_authorized_networks_config, [])
   node_pools                        = each.value.node_pools
 }
