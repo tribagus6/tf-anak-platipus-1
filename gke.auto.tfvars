@@ -1,7 +1,7 @@
 gke_clusters = {
   # Uncomment the block below whenever you are ready to provision the GKE cluster:
   "platipus-gke-dev" = {
-    location                     = "asia-east1"
+    location                     = "asia-east1-a"
     subnet_name                  = "subnet-01"
     pod_secondary_range_name     = "gke-pod-dev-1"
     service_secondary_range_name = "gke-svc-dev-1"
@@ -15,7 +15,7 @@ gke_clusters = {
     node_pools = {
       "system-pool" = {
         machine_type = "e2-standard-2"
-        disk_size_gb = 30
+        disk_size_gb = 20
         disk_type    = "pd-standard"
         is_spot      = true
         node_count   = 2
